@@ -16,10 +16,6 @@ export class HomePage {
   constructor(public service : ServiceService, private router : Router) {
   }
 
-  ngOnInit() {
-    
-  }
-
   ionViewWillEnter() {
     this.getTask();
   }
