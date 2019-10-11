@@ -11,6 +11,7 @@ export class HomePage {
 
   public listTask;
   private state = "All";
+  private IP = "192.168.103.24";
 
   constructor(public service : ServiceService, private router : Router) {
   }
@@ -34,13 +35,13 @@ export class HomePage {
         for (var i = 0; i< data.length; i++) {
           switch (data[i].state) {
             case "To do":
-              data[i].urlImage = "http://localhost:8080/to-do.jpg"
+              data[i].urlImage = "http://" + this.IP +":8080/to-do.jpg"
               break;
             case "In progress":
-              data[i].urlImage = "http://localhost:8080/in-progress.png"
+              data[i].urlImage = "http://" + this.IP + ":8080/in-progress.png"
               break;
             case "Done":
-              data[i].urlImage = "http://localhost:8080/done.png"
+              data[i].urlImage = "http://" + this.IP + ":8080/done.png"
               break;
           }
         }
