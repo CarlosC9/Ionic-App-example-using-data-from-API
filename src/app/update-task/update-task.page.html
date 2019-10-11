@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon slot="start" name="arrow-back" (click)="onClickExit()"></ion-icon>
+    <ion-title>Update Task</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form>
+
+    <ion-item>
+      <ion-label>Description</ion-label>
+      <ion-input id="descriptionText" type="text" placeholder="Write Description" [(ngModel)]="textDescription"
+        [ngModelOptions]="{standalone: true}"></ion-input>
+    </ion-item>
+
+    <ion-list>
+      <ion-radio-group #c (ionChange)="onChangeState(c.value)" [(ngModel)]="state" [ngModelOptions]="{standalone: true}">
+        <ion-list-header>
+          <ion-label>State</ion-label>
+        </ion-list-header>
+
+        <ion-item>
+          <ion-label>To do</ion-label>
+          <ion-radio value="To do"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>In progress</ion-label>
+          <ion-radio value="In progress"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Done</ion-label>
+          <ion-radio value="Done"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+
+    <ion-button expand="block" color="secondary" (click)="onClickUpdate()">
+      Update
+    </ion-button>
+
+  </form>
+
+</ion-content>

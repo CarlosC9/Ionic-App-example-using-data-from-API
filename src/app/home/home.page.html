@@ -1,14 +1,68 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      Task
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+
+    <ion-button expand="block" (click)="onClickCreateTask()">
+      Create new Task
+    </ion-button>
+
+    <ion-item>
+        <ion-label>State</ion-label>
+        <ion-select #C (ionChange)="onChangeState(C.value)" placeholder="Select State">
+          <ion-select-option value="All">All</ion-select-option>
+          <ion-select-option value="To do">To do</ion-select-option>
+          <ion-select-option value="In progress">In progress</ion-select-option>
+          <ion-select-option value="Done">Done</ion-select-option>
+        </ion-select>
+    </ion-item>
+
+    <ion-card *ngFor="let task of listTask">
+
+      <ion-card-header>
+          <ion-grid>
+              <ion-row>
+                <ion-col size="8">
+                  <ion-card-subtitle>State : {{task.state}}</ion-card-subtitle>
+                </ion-col>
+                <ion-col size="4">
+                  <ion-img [src]="task.urlImage"></ion-img>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+        
+        
+        
+      </ion-card-header>
+
+      <ion-card-content>
+        {{task.descripcion}}
+      </ion-card-content>
+
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-button color="secondary" expand="block" (click)="onClickUpdate({ id:task.id , descripcion:task.descripcion , state:task.state })">
+                Update
+              </ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button expand="block" color="danger" (click)="onClickDelete(task.id)">
+                Delete
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+
+    </ion-card>
+
   </div>
 </ion-content>
